@@ -1,6 +1,52 @@
 # Ejercicios de Comandos Básicos
 
+## Variables de entorno
+
+### Ejercicio: Crear, verificar y eliminar una variable de entorno temporal
+
+1. Crea y verifica una variable de entorno temporal llamada `SESION_SINCRONA` cuyo valor de arranque sea `3`.
+2. Elimina la variable creada.
+3. Utiliza el comando `man` para ayuda del comando `printenv`.
+
+```bash
+export SESION_SINCRONA=3
+printenv SESION_SINCRONA
+unset SESION_SINCRONA
+man printenv
+```
+
+### Ejercicio: Mostrar el valor de variables de entorno
+
+Estando en el home del usuario, ejecutar los siguientes comandos:
+
+```bash
+echo $SHELL
+echo $HOSTNAME
+echo $PATH
+echo $RANDOM
+echo $PWD
+echo $HOME
+echo $USER
+```
+
+¿Qué hace la variable `$RANDOM`?
+
+## Comandos y flags
+
+### Ejercicio: Explora el comando `df` y sus flags
+
+1. Ejecuta el comando `df`.
+2. Ejecuta el comando `df -h`.
+3. Ejecuta el comando `df -T`.
+4. Ejecuta el comando `df -Th`.
+
+- ¿Qué indica `df`?
+- ¿Cuál es la diferencia entre ellos? Identifica la función del flag `-h` y del flag `-T`.
+- Realiza el mismo ejercicio con `ls` y sus flags `-l`, `-a` y `-s`.
+
 ## Sistema de Archivos
+
+### Ejercicio: Identificar directorio actual
 
 **Identifica tu directorio actual y su ruta absoluta:**
 
@@ -9,6 +55,8 @@ pwd
 ```
 
 _`pwd` significa "print working directory" (imprimir directorio de trabajo)._
+
+### Ejercicio: Listar contenido de directorio
 
 **Lista el contenido con y sin archivos ocultos:**
 
@@ -22,6 +70,8 @@ _En Unix/Linux, los archivos ocultos comienzan con un punto (`.`)._
 
 _El flag `-a`significa "all" (todos) y `-l` significa "long format" (formato largo)._
 
+### Ejercicio: Crear directorios y navegar entre ellos
+
 **Crea un directorio llamado `proyecto` en tu directorio personal:**
 
 ```bash
@@ -29,6 +79,8 @@ mkdir ~/proyecto
 ```
 
 _`~` es una abreviatura para el directorio personal del usuario actual._
+
+### Ejercicio: Crear subdirectorios
 
 **Crea una carpeta llamada `js` dentro de la carpeta `assets` que a su vez está dentro de `proyecto`:**
 
@@ -38,11 +90,15 @@ mkdir -p ~/proyecto/assets/js
 
 _`-p` significa "parents" (padres) y crea los directorios padres si no existen._
 
+### Ejercicio:
+
 **Navega al directorio `proyecto`:**
 
 ```bash
 cd ~/proyecto
 ```
+
+### Ejercicio:
 
 **Crea un archivo llamado `archivo.txt` dentro del directorio `proyecto`:**
 
@@ -50,17 +106,23 @@ cd ~/proyecto
 touch archivo.txt
 ```
 
+### Ejercicio:
+
 **Mueve el archivo `archivo.txt` al directorio personal:**
 
 ```bash
 mv archivo.txt ~/
 ```
 
+### Ejercicio:
+
 **Vuelve al directorio anterior sin escribir la ruta:**
 
 ```bash
 cd -
 ```
+
+### Ejercicio:
 
 **Muestra el árbol de directorios desde tu directorio personal:**
 
@@ -70,6 +132,8 @@ tree -a ~/  # Incluye archivos ocultos
 tree -L 2 ~/  # Limita la profundidad a 2 niveles
 ```
 
+### Ejercicio:
+
 **Diferencia entre `ls`, `ls -l` y `ls -lh`:**
 
 - `ls`: Lista los nombres de los archivos y directorios en el directorio actual.
@@ -78,17 +142,23 @@ tree -L 2 ~/  # Limita la profundidad a 2 niveles
 
 _`h` significa "human-readable" (legible para humanos). En lugar de decirte que un archivo pesa 1048576 bytes, te mostrará 1M._
 
+### Ejercicio:
+
 **Localiza tu `$HOME` usando una variable de entorno:**
 
 ```bash
 echo $HOME
 ```
 
+### Ejercicio:
+
 **Comprueba qué shell estás utilizando:**
 
 ```bash
 echo $SHELL
 ```
+
+### Ejercicio:
 
 **Averigua el tamaño de un directorio concreto:**
 
@@ -199,7 +269,7 @@ _`rmdir` solo funciona si el directorio está vacío. Si no lo está, usa `rm -r
 cat ~/notas.txt
 ```
 
-***Visualiza el contenido de archivo grandes del sistema como `/var/log/syslog` o `/var/log/auth.log` página a página:**
+**\*Visualiza el contenido de archivo grandes del sistema como `/var/log/syslog` o `/var/log/auth.log` página a página:**
 
 ```bash
 less /var/log/syslog
@@ -325,5 +395,3 @@ tail -n 5 /var/log/syslog
 ```bash
 tail -f /var/log/syslog
 ```
-
-

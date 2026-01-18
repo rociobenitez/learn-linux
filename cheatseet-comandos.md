@@ -8,8 +8,16 @@
 |         | `ls -l`                              | Listar con detalles (permisos, propietario, tamaño, fecha)                                     |
 |         | `ls -lh`                             | Listar con detalles en un formato legible (tamaños en KB, MB...)                               |
 |         | `ls -a`                              | Listar incluidos los ocultos                                                                   |
+|         | `ls -la`                             | Listar con detalles incluidos los ocultos                                                      |
+|         | `ls -lt`                             | Listar con detalles ordenados por fecha (más recientes primero)                                |
+|         | `ls -ltr`                            | Listar con detalles ordenados por fecha (más antiguos primero)                                 |
+|         | `ls -s`                              | Listar mostrando el tamaño de cada archivo en bloques de 1 KB                                  |
+|         | `ls -R`                              | Listar de forma recursiva todos los subdirectorios                                             |
 | `pwd`   |                                      | Mostrar el directorio actual                                                                   |
 | `cd`    | `[directorio]`                       | Cambiar de directorio                                                                          |
+|         | `cd ~`                               | Ir al directorio home del usuario                                                              |
+|         | `cd -`                               | Volver al directorio anterior                                                                  |
+|         | `cd ..`                              | Subir un nivel en la jerarquía de directorios                                                  |
 | `sudo`  | `[comando]`                          | Ejecutar un comando con privilegios de superusuario                                            |
 | `nano`  | `[fichero]`                          | Editar archivo de texto con el editor nano                                                     |
 | `touch` | `[fichero]`                          | Crear nuevo archivo vacío o actualizar la fecha de modificación                                |
@@ -20,22 +28,43 @@
 | `rm`    | `[opciones] [fichero]`               | Eliminar fichero                                                                               |
 |         | `rm -r`                              | Eliminar un directorio y su contenido de forma recursiva.                                      |
 | `find`  | `[ruta] -name [patrón]`              | Buscar archivos y directorios por nombre                                                       |
-|         | `find /home -name "*.txt"`           | Buscar todos los archivos `.txt` en el directorio `/home`                                      |
 |         | `[ruta] -type [f\|d] -name [patrón]` | Buscar archivos (`f`) o directorios (`d`) por nombre                                           |
 |         | `[ruta] -size [+-]n[cwbkMG]`         | Buscar archivos por tamaño (n: tamaño, c: bytes, w: palabras, b: bloques, k: KB, M: MB, G: GB) |
+|         | `find /home -name "*.txt"`           | Buscar todos los archivos `.txt` en el directorio `/home`                                      |
 | `file`  | `[fichero]`                          | Determinar el tipo de un archivo                                                               |
+| `tree`  | `[opciones] [directorio]`            | Mostrar la estructura de directorios en forma de árbol                                         |
+|         | `tree -a`                            | Incluir archivos ocultos en la visualización del árbol                                         |
+|         | `tree -L n`                          | Limitar la profundidad del árbol a `n` niveles                                                 |
+|         | `tree -d`                            | Mostrar solo directorios en la visualización del árbol                                         |
+|         | `tree -h`                            | Mostrar tamaños de archivos en formato legible en la visualización del árbol                   |
+| `ln`    | `-s [origen] [destino]`              | Crear un enlace simbólico (acceso directo)                                                     |
 
 ## Comandos informativos del sistema
 
-| Comando |              | Descripción                                            |
-| ------- | ------------ | ------------------------------------------------------ |
-| `uname` | `[opciones]` | Mostrar información detallada del sistema operativo    |
-| `man`   | `[comando]`  | Mostrar el manual de un comando                        |
-| `date`  |              | Mostrar la fecha y hora actuales                       |
-| `ps`    | `[opciones]` | Mostrar procesos en ejecución                          |
-| `top`   |              | Mostrar procesos en tiempo real                        |
-| `df`    | `[opciones]` | Mostrar el uso del espacio en disco                    |
-|         | `df -h`      | Mostrar el uso del espacio en disco en formato legible |
+| Comando   |                                 | Descripción                                                                  |
+| --------- | ------------------------------- | ---------------------------------------------------------------------------- |
+| `uname`   | `[opciones]`                    | Mostrar información detallada del sistema operativo                          |
+| `man`     | `[comando]`                     | Mostrar el manual de un comando                                              |
+| `history` |                                 | Mostrar el historial de comandos ejecutados                                  |
+| `date`    |                                 | Mostrar la fecha y hora actuales                                             |
+|           | `date +%Y-%m-%d %H:%M:%S`       | Mostrar la fecha y hora en formato personalizado                             |
+|           | `date +%A`                      | Mostrar el día de la semana                                                  |
+|           | `date +%T`                      | Mostrar la hora en formato HH:MM:SS                                          |
+|           | `date -s "AAAA-MM-DD HH:MM:SS"` | Establecer la fecha y hora del sistema (requiere permisos de superusuario)   |
+| `ps`      | `[opciones]`                    | Mostrar procesos en ejecución                                                |
+| `top`     |                                 | Mostrar procesos en tiempo real                                              |
+| `htop`    |                                 | Mostrar procesos en tiempo real con interfaz mejorada                        |
+| `free`    |                                 | Mostrar el uso de memoria (RAM y swap)                                       |
+| `uptime`  |                                 | Mostrar el tiempo de actividad del sistema y la carga media                  |
+| `df`      | `[opciones]`                    | Mostrar el uso del espacio en disco                                          |
+|           | `df -h`                         | Mostrar el uso del espacio en disco en formato legible                       |
+|           | `df -T`                         | Mostrar el tipo de sistema de archivos junto con el uso del espacio en disco |
+|           | `df -Th`                        | Mostrar el tipo de sistema de archivos y uso en formato legible (KB, MB, GB) |
+| `du`      | `[opciones] [directorio]`       | Mostrar el uso del espacio en disco de un directorio                         |
+|           | `du -h`                         | Mostrar el uso del espacio en disco en formato legible                       |
+|           | `du -sh`                        | Mostrar el uso total del espacio en disco de un directorio                   |
+| `iostat`  | `[opciones]`                    | Mostrar estadísticas de entrada/salida de dispositivos                       |
+| `vmstat`  | `[opciones]`                    | Mostrar estadísticas del sistema (memoria, CPU, procesos, etc.)              |
 
 > Ver más comandos informativos relacionados con usuarios y grupos en la sección ["Mostrar información de usuarios y grupos"](mostrar-información-de-usuarios-y-grupos).
 
@@ -46,10 +75,10 @@
 | `env`      |              | Mostrar todas las variables de entorno                                   |
 | `printenv` | `[VARIABLE]` | Mostrar el valor de una variable de entorno específica                   |
 | `export`   | `[VARIABLE]` | Exportar una variable de entorno para que esté disponible en subprocesos |
-| `unset`    | `[VARIABLE]` | Eliminar una variable de entorno                                        |
-| `set`      | `[opciones]` | Configurar opciones del intérprete de comandos                           |
+| `set`      | `[opciones]` | Configurar opciones del intérprete de comandos<br>Crear una variable     |
 |            | `set -e`     | Salir del script si cualquier comando falla                              |
 |            | `set -x`     | Mostrar cada comando antes de ejecutarlo                                 |
+| `unset`    | `[VARIABLE]` | Eliminar una variable de entorno                                         |
 
 ## Trabajar con archivos de texto
 
@@ -90,6 +119,9 @@
 |         | `zip -r archivo.zip directorio/`          | Comprimir un directorio en un archivo zip                              |
 | `unzip` | `[opciones] [fichero]`                    | Extraer archivos de un archivo zip                                     |
 |         | `unzip archivo.zip`                       | Extraer el contenido de un archivo zip                                 |
+| `tr`    | `[opciones]`                              | Traducir o eliminar caracteres en un flujo de texto                    |
+|         | `tr 'a-z' 'A-Z' < archivo.txt`            | Convertir minúsculas a mayúsculas en un archivo de texto               |
+|         | `tr -d 'aeiou' < archivo.txt`             | Eliminar vocales de un archivo de texto                                |
 
 ## Comandos para ver ficheros de configuración de usuarios y grupos
 
@@ -240,46 +272,48 @@
 
 ## Comandos de procesos
 
-| Comando   |                                               | Descripción                                                     |
-| --------- | --------------------------------------------- | --------------------------------------------------------------- |
-| `ps`      | `[opciones]`                                  | Mostrar procesos en ejecución                                   |
-|           | `ps -l`                                       | Muestra una lista larga con más detalles                        |
-|           | `ps -f`                                       | Muestra una lista completa con detalles adicionales             |
-|           | `ps -l`                                       | Muestra una lista larga con más detalles                        |
-|           | `ps -a`                                       | Muestra procesos de todos los usuarios en la terminal actual    |
-|           | `ps -u nombre_usuario`                        | Muestra procesos del usuario especificado                       |
-|           | `ps -U nombre_usuario`                        | Muestra procesos del usuario especificado y sus hijos           |
-|           | `ps -C nombre_proceso`                        | Muestra procesos por nombre de comando                          |
-|           | `ps -x`                                       | Muestra procesos sin terminal asociado                          |
-|           | `ps -p PID`                                   | Muestra información del proceso con el PID especificado         |
-|           | `ps -o pid,ppid,cmd,%mem,%cpu`                | Muestra columnas específicas                                    |
-|           | `ps -eo pid,ppid,cmd,%mem,%cpu`               | Muestra columnas específicas                                    |
-|           | `ps -eo pid,ppid,cmd,%mem,%cpu --sort==-%mem` | Muestra columnas específicas ordenadas por uso de memoria       |
-|           | `ps -ef`                                      | Muestra todos los procesos en formato completo                  |
-|           | `ps -ef \| less`                              | Muestra todos los procesos con paginación                       |
-|           | `ps aux`                                      | Muestra todos los procesos con detalles adicionales             |
-|           | `ps aux --sort -pcpu`                         | Ordena los procesos por uso de CPU                              |
-|           | `ps aux --sort -pmem`                         | Ordena los procesos por uso de memoria                          |
-|           | `ps aux --sort -pcpu,+pmem`                   | Ordena los procesos por uso de CPU y memoria                    |
-|           | `ps aux \| grep nombre_usuario`               | Filtra procesos por nombre de usuario                           |
-|           | `ps aux \| grep ' R '`                        | Muestra procesos en estado 'Ejecutando o listo para ejecutarse' |
-|           | `ps aux \| grep ' S '`                        | Muestra procesos en estado 'Suspendido (sleeping)'              |
-| `pstree`  | `[opciones] [PID]`                            | Mostrar árbol de procesos                                       |
-|           | `pstree -p`                                   | Mostrar árbol de procesos con PIDs                              |
-|           | `pstree -u`                                   | Mostrar árbol de procesos con nombres de usuario                |
-| `uptime`  |                                               | Muestra el tiempo de actividad del sistema y la carga media     |
-| `top`     | `[opciones]`                                  | Mostrar procesos en tiempo real                                 |
-|           | `top -u nombre_usuario`                       | Mostrar procesos de un usuario específico                       |
-| `htop`    |                                               | Mostrar procesos en tiempo real con interfaz mejorada           |
-| `kill`    | `[PID]`                                       | Terminar un proceso por su ID                                   |
-| `killall` | `[nombre_proceso]`                            | Terminar todos los procesos con el nombre especificado          |
-| `free`    |                                               | Mostrar el uso de memoria (RAM y swap)                          |
-| `uptime`  |                                               | Mostrar el tiempo de actividad del sistema y la carga media     |
-| `swapon`  | `[opciones]`                                  | Activar espacio de intercambio (swap)                           |
-|           | `swapon -s`                                   | Mostrar el estado del espacio de intercambio (swap)             |
-| `swapoff` |                                               | Desactivar espacio de intercambio (swap)                        |
-| `vmstat`  | `[opciones]`                                  | Proporcionar estadísticas detalladas de memoria                 |
-|           | `vmstat -s`                                   | Mostrar el uso de memoria y swap en bloques                     |
+| Comando   |                                               | Descripción                                                          |
+| --------- | --------------------------------------------- | -------------------------------------------------------------------- |
+| `ps`      | `[opciones]`                                  | Mostrar procesos en ejecución                                        |
+|           | `ps -l`                                       | Muestra una lista larga con más detalles                             |
+|           | `ps -f`                                       | Muestra una lista completa con detalles adicionales                  |
+|           | `ps -l`                                       | Muestra una lista larga con más detalles                             |
+|           | `ps -a`                                       | Muestra procesos de todos los usuarios en la terminal actual         |
+|           | `ps -u nombre_usuario`                        | Muestra procesos del usuario especificado                            |
+|           | `ps -U nombre_usuario`                        | Muestra procesos del usuario especificado y sus hijos                |
+|           | `ps -C nombre_proceso`                        | Muestra procesos por nombre de comando                               |
+|           | `ps -x`                                       | Muestra procesos sin terminal asociado                               |
+|           | `ps -p PID`                                   | Muestra información del proceso con el PID especificado              |
+|           | `ps -o pid,ppid,cmd,%mem,%cpu`                | Muestra columnas específicas                                         |
+|           | `ps -eo pid,ppid,cmd,%mem,%cpu`               | Muestra columnas específicas                                         |
+|           | `ps -eo pid,ppid,cmd,%mem,%cpu --sort==-%mem` | Muestra columnas específicas ordenadas por uso de memoria            |
+|           | `ps -ef`                                      | Muestra todos los procesos en formato completo                       |
+|           | `ps -ef \| less`                              | Muestra todos los procesos con paginación                            |
+|           | `ps aux`                                      | Muestra todos los procesos con detalles adicionales                  |
+|           | `ps aux --sort -pcpu`                         | Ordena los procesos por uso de CPU                                   |
+|           | `ps aux --sort -pmem`                         | Ordena los procesos por uso de memoria                               |
+|           | `ps aux --sort -pcpu,+pmem`                   | Ordena los procesos por uso de CPU y memoria                         |
+|           | `ps aux \| grep nombre_usuario`               | Filtra procesos por nombre de usuario                                |
+|           | `ps aux \| grep ' R '`                        | Muestra procesos en estado 'Ejecutando o listo para ejecutarse'      |
+|           | `ps aux \| grep ' S '`                        | Muestra procesos en estado 'Suspendido (sleeping)'                   |
+|           | `ps aux \| awk '{print $1, $2, $3, $4, $11}'` | Muestra usuario, PID, uso de CPU, uso de memoria y comando           |
+|           | `ps aux \| awk '$8=="R" {print $0}'`          | Muestra solo procesos en estado 'Ejecutando o listo para ejecutarse' |
+| `pgrep`   | `[opciones] nombre_proceso`                   | Buscar procesos por nombre                                           |
+|           | `pgrep -u nombre_usuario nombre_proceso`      | Buscar procesos por nombre de usuario y nombre de proceso            |
+| `pstree`  | `[opciones] [PID]`                            | Mostrar árbol de procesos                                            |
+|           | `pstree -p`                                   | Mostrar árbol de procesos con PIDs                                   |
+|           | `pstree -u`                                   | Mostrar árbol de procesos con nombres de usuario                     |
+| `uptime`  |                                               | Muestra el tiempo de actividad del sistema y la carga media          |
+| `top`     | `[opciones]`                                  | Mostrar procesos en tiempo real                                      |
+|           | `top -u nombre_usuario`                       | Mostrar procesos de un usuario específico                            |
+| `htop`    |                                               | Mostrar procesos en tiempo real con interfaz mejorada                |
+| `kill`    | `[PID]`                                       | Terminar un proceso por su ID                                        |
+| `killall` | `[nombre_proceso]`                            | Terminar todos los procesos con el nombre especificado               |
+| `swapon`  | `[opciones]`                                  | Activar espacio de intercambio (swap)                                |
+|           | `swapon -s`                                   | Mostrar el estado del espacio de intercambio (swap)                  |
+| `swapoff` |                                               | Desactivar espacio de intercambio (swap)                             |
+| `vmstat`  | `[opciones]`                                  | Proporcionar estadísticas detalladas de memoria                      |
+|           | `vmstat -s`                                   | Mostrar el uso de memoria y swap en bloques                          |
 
 ## Programación en shell
 

@@ -322,8 +322,9 @@ df
 ```
 
 ```bash
-df -h    # Uso espacio en disco en formato legible por humanos (KB, MB, GB)
 df -T    # Tipo de sistema de archivos junto con el uso del espacio en disco
+df -h    # Uso espacio en disco en formato legible por humanos (KB, MB, GB)
+df -Th   # Tipo de sistema de archivos y uso en formato legible por humanos (KB, MB, GB)
 ```
 
 Salida:

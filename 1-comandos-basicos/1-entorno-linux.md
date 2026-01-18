@@ -81,10 +81,9 @@ Suele incluir información como:
 
 Seguido del signo de dólar `$` (para usuarios normales) o del símbolo de almohadilla `#` (para el usuario root).
 
-Ejemplo de un prompt típico:
-
-```
-usuario@maquina:~$
+```bash
+usuario@maquina:/ruta~$    # para usuario normal
+usuario@maquina:~#         # para root
 ```
 
 El prompt puede ser personalizado para mostrar diferentes colores, símbolos o información adicional según las preferencias del usuario.
@@ -123,6 +122,56 @@ $ echo 'Hola $USER'   # Salida: Hola $USER
 ```
 
 > Los metacaracteres de redirección (`>`, `>>`, `<`) se explican en más detalle en la sección de ["Comandos de redirección"](./3-comandos-basicos-linux.md#comandos-de-redireccion).
+
+## Tipos de usuarios en Linux
+
+| Tipo de usuario                                   | Descripción                                                                                                                                    |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Usuario normal**                                | Usuario con permisos limitados para tareas diarias.<br>Puede iniciar sesión, ejecutar aplicaciones y acceder a archivos y directorios propios. |
+| **Usuario con permisos de superusuario _(sudo)_** | Usuario normal que puede usar `sudo` para tareas administrativas ocasionales sin tener que estar siempre en el modo de superusuario.           |
+| **Root _(superusuario)_**                         | Usuario con privilegios administrativos completos.<br>Tiene control total sobre el sistema.                                                    |
+| **Usuario especial**                              | Usuarios creados para servicios específicos (como `www-data` para servidores web).<br>No suelen iniciar sesión directamente.                   |
+
+## Gestor de paquetes
+
+Un **gestor de paquetes** es una herramienta que facilita la instalación, actualización, configuración y eliminación de software en un sistema operativo.
+
+Cada distribución de Linux utiliza su propio gestor de paquetes:
+
+- **Debian/Ubuntu**: `apt` o `apt-get`
+- **Fedora**: `dnf`
+- **CentOS/RHEL**: `yum`
+- **Arch Linux**: `pacman`
+
+Ejemplo de uso de `apt` para instalar un paquete:
+
+```bash
+sudo apt install nombre_paquete      # Instala el paquete especificado
+sudo apt search termino_busqueda     # Busca paquetes relacionados con el término especificado
+sudo apt list --installed            # Lista todos los paquetes instalados en el sistema
+
+sudo apt-get update                  # Actualiza la lista de paquetes disponibles
+sudo apt-get upgrade                 # Actualiza todos los paquetes instalados a sus últimas versiones
+sudo apt-get remove nombre_paquete   # Elimina el paquete especificado
+sudo apt-get purge nombre_paquete    # Desinstala el paquete y elimina sus archivos de configuración
+```
+
+|  `APT`  | `APT-GET` | `APTITUDE` |
+| :-----: | :-------: | :--------: |
+| install |  install  |  install   |
+| upgrade |  upgrade  |  upgrade   |
+|    -    |  update   |   update   |
+|    -    |  remove   |   remove   |
+|  purge  |   purge   |   purge    |
+| search  |     -     |   search   |
+|  list   |     -     |     -      |
+
+`aptitude`:
+
+- Se tiene que instalar con `sudo apt install aptitude`.
+- Versión mejorada de `apt-get` con una interfaz de usuario basada en texto.
+- Al eliminar un paquete, elimina las dependencias que ya no son necesarias.
+- Antes de hacer cualquier cosa, siempre pregunta.
 
 ## Variables en Linux
 
@@ -200,18 +249,19 @@ BASH_ARGC=()
 
 ## Variables de entorno comunes en Linux
 
-| Variable     | Descripción                                              | Valor de ejemplo                                               |
-| ------------ | -------------------------------------------------------- | -------------------------------------------------------------- |
-| **PATH**     | Lista de directorios donde el sistema busca ejecutables. | `/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin` |
-| **HOME**     | Directorio personal del usuario actual.                  | `/home/usuario`                                                |
-| **USER**     | Nombre del usuario actual.                               | `usuario`                                                      |
-| **SHELL**    | Ruta del intérprete de comandos predeterminado.          | `/bin/bash`                                                    |
-| **PWD**      | Directorio de trabajo actual.                            | `/home/usuario`                                                |
-| **LANG**     | Configuración regional y de idioma.                      | `es_ES.UTF-8`                                                  |
-| **TERM**     | Tipo de terminal utilizado.                              | `xterm-256color`                                               |
-| **EDITOR**   | Editor de texto predeterminado.                          | `nano`                                                         |
-| **LOGNAME**  | Nombre de inicio de sesión del usuario.                  | `usuario`                                                      |
-| **HOSTNAME** | Nombre del host del sistema.                             | `maquina`                                                      |
+| Variable   | Descripción                                              | Valor de ejemplo                                               |
+| ---------- | -------------------------------------------------------- | -------------------------------------------------------------- |
+| `PATH`     | Lista de directorios donde el sistema busca ejecutables. | `/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin` |
+| `HOME`     | Directorio personal del usuario actual.                  | `/home/usuario`                                                |
+| `USER`     | Nombre del usuario actual.                               | `usuario`                                                      |
+| `SHELL`    | Ruta del intérprete de comandos predeterminado.          | `/bin/bash`                                                    |
+| `PWD`      | Directorio de trabajo actual.                            | `/home/usuario`                                                |
+| `LANG`     | Configuración regional y de idioma.                      | `es_ES.UTF-8`                                                  |
+| `TERM`     | Tipo de terminal utilizado.                              | `xterm-256color`                                               |
+| `EDITOR`   | Editor de texto predeterminado.                          | `nano`                                                         |
+| `LOGNAME`  | Nombre de inicio de sesión del usuario.                  | `usuario`                                                      |
+| `HOSTNAME` | Nombre del host del sistema.                             | `maquina`                                                      |
+| `RANDOM`   | Número aleatorio generado por el sistema.                | `123456789`                                                    |
 
 ## Comandos relacionados con variables de entorno
 
