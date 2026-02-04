@@ -2,7 +2,7 @@
 
 ## Qué es una red
 
-Una red es un conjunto de dispositivos interconectados que pueden comunicarse entre sí para compartir recursos e información. Estos dispositivos pueden incluir computadoras, servidores, routers, switches, impresoras y otros equipos de red.
+Una **red** es un conjunto de dispositivos interconectados que pueden **comunicarse entre sí para compartir recursos e información**. Estos dispositivos pueden incluir computadoras, servidores, routers, switches, impresoras y otros equipos de red.
 
 ## Redes de ordenadores
 
